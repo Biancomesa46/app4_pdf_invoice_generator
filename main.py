@@ -32,4 +32,13 @@ for filepath in filepaths:
         pdf.cell(txt=str(row['amount_purchased']), h=8, w=30, border=1)
         pdf.cell(txt=str(row['price_per_unit']), h=8, w=30, border=1)
         pdf.cell(txt=str(row['total_price']), h=8, w=30, border=1, ln=1)
+    pdf.cell(txt=" ", h=8, w=30, border=1)
+    pdf.cell(txt=" ", h=8, w=60, border=1)
+    pdf.cell(txt=" ", h=8, w=30, border=1)
+    pdf.cell(txt=" ", h=8, w=30, border=1)
+    pdf.cell(txt=str(df["total_price"].sum()), h=8, w=30, border=1, ln=1)
+
+    pdf.set_font(family="Times", style="B", size=12)
+    pdf.cell(border=0, ln=1, h=8, w=30, txt=f"The total due amount is {df['total_price'].sum()} Euros.")
+
     pdf.output("PDFs/" + filepath.strip('invoices\\.xlsx') + ".pdf")
